@@ -16,10 +16,18 @@ function LoginComponent() {
         body: JSON.stringify({
             username: username,
             password: password
-        })
+        }),
     })
 
-    .then(response => response.json())
+    // .then(response => {
+    //   const token = response.data.token; 
+    //   localStorage.setItem('token', token);
+    //   console.log(response);
+    // })
+    .then(response => {
+      response.json();
+      console.log(response)
+    })
     .then(response => console.log(response))
     .catch(error => console.log(error))
     setUsername('');
@@ -34,7 +42,7 @@ function LoginComponent() {
         <div className="login-container-style">
           <h2>Admin Login</h2>
           <label 
-            for='username'>username
+            htmlFor='username'>username
           </label>
           <input 
             type="text" 
@@ -42,7 +50,7 @@ function LoginComponent() {
             id="username" 
             value={username} 
             onChange={event => setUsername(event.target.value)} />
-          <label for='password'>password
+          <label htmlFor='password'>password
           </label>
           <input 
             type="text"
@@ -65,15 +73,18 @@ function LoginComponent() {
 //   const [username, setUsername] = useState('');
 //   const [password, setPassword] = useState('');
 
-//   const login = async (adminLogin) => {
-//     adminLogin.preventDefault();
+//   const login = async (event) => {
+//     event.preventDefault();
 //     const response = await fetch(`http://localhost:8080/admin/login`, {
 //         method: 'POST',
 //         headers: {
 //             'Accept': 'application/json',
 //             'Content-Type': 'application/json'
 //         },
-//         body: JSON.stringify(adminLogin)
+//         body: JSON.stringify({
+//           username: username,
+//           password: password
+//       }),
 //     });
 
 //     const data = await response.json();
