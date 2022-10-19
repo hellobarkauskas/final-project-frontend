@@ -19,19 +19,19 @@ function LoginComponent() {
         }),
     })
 
-    // .then(response => {
-    //   const token = response.data.token; 
-    //   localStorage.setItem('token', token);
-    //   console.log(response);
-    // })
+    .then(response => response.json())
     .then(response => {
-      response.json();
-      console.log(response)
-    })
-    .then(response => console.log(response))
+        const data = response;
+        localStorage.setItem('token', data.token);
+        // localStorage.setItem('token', JSON.stringify(data.token));
+        // localStorage.setItem('adminId', JSON.stringify(data.admin_id));
+        localStorage.setItem('adminId', data.admin_id);
+        console.log(data.token, data.admin_id);
+      })
     .catch(error => console.log(error))
     setUsername('');
     setPassword('');
+
   }
 
   return (
@@ -68,68 +68,5 @@ function LoginComponent() {
   );
 
 };
-
-// function LoginComponent() {
-//   const [username, setUsername] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   const login = async (event) => {
-//     event.preventDefault();
-//     const response = await fetch(`http://localhost:8080/admin/login`, {
-//         method: 'POST',
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//           username: username,
-//           password: password
-//       }),
-//     });
-
-//     const data = await response.json();
-
-//     if (data.error) {
-//         document.getElementById('error-message').textContent = data.error;
-//         return;
-//     };
-
-//     localStorage.setItem('token', data.token);
-//   };
-
-//   return (
-//     <div>
-//       <HeaderLayoutComponent />
-
-//       <form className="login-container">
-//         <div className="login-container-style">
-//           <h2>Admin Login</h2>
-//           <label 
-//             for='username'>username
-//           </label>
-//           <input 
-//             type="text" 
-//             name="username" 
-//             id="username" 
-//             value={username} 
-//             onChange={adminLogin => setUsername(adminLogin.target.value)} />
-//           <label for='password'>password
-//           </label>
-//           <input 
-//             type="text"
-//             name="password"
-//             id="password"
-//             value={password}
-//             onChange={adminLogin => setPassword(adminLogin.target.value)} />
-//           <button 
-//             type="submit" 
-//             onClick={adminLogin => login(adminLogin)}>Login
-//           </button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-
-// };
 
 export default LoginComponent;
