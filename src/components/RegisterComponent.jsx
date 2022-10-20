@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HeaderLayoutComponent from "./HeaderLayoutComponent";
+import '../style/ErrorMessage.css';
 
 function RegisterComponent() {
   const [username, setUsername] = useState('');
@@ -20,7 +21,15 @@ function RegisterComponent() {
     })
 
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => {
+      const data = response;
+      if (data.error) {
+        document.getElementById('error-message').textContent = data.error;
+        return;
+      } else {
+        document.getElementById('error-message').textContent = '';
+      };
+    })
     .catch(error => console.log(error))
     setUsername('');
     setPassword('');
@@ -57,6 +66,7 @@ function RegisterComponent() {
           </button>
         </div>
       </form>
+      <div id="error-message"></div>
     </div>
   );
 

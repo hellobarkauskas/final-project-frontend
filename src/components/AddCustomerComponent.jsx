@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CustomersPanelComponent from "./CustomersPanelComponent";
+import '../style/ErrorMessage.css';
 
 function AddCustomerComponent() {
   const token = localStorage.getItem('token');
@@ -31,7 +32,15 @@ function AddCustomerComponent() {
     })
 
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => {
+      const data = response;
+      if (data.error) {
+        document.getElementById('error-message').textContent = data.error;
+        return;
+      } else {
+        document.getElementById('error-message').textContent = '';
+      };
+    })
     .catch(error => console.log(error))
     console.log(token);
     console.log(loggedInAdmin);
@@ -100,6 +109,7 @@ function AddCustomerComponent() {
           </button>                                  
         </div>     
       </form>
+      <div id="error-message"></div>
     </div>
   );
 
