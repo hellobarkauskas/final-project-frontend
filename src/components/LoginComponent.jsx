@@ -1,5 +1,7 @@
 import { useState } from "react";
 import HeaderLayoutComponent from "./HeaderLayoutComponent";
+import LogoutComponent from './LogoutComponent';
+import '../style/ErrorMessage.css';
 
 function LoginComponent() {
   const [username, setUsername] = useState('');
@@ -22,6 +24,12 @@ function LoginComponent() {
     .then(response => response.json())
     .then(response => {
         const data = response;
+        if (data.error) {
+          document.getElementById('error-message').textContent = data.error;
+          return;
+        } else {
+          document.getElementById('error-message').textContent = '';
+        };
         localStorage.setItem('token', data.token);
         // localStorage.setItem('token', JSON.stringify(data.token));
         // localStorage.setItem('adminId', JSON.stringify(data.admin_id));
@@ -62,8 +70,13 @@ function LoginComponent() {
             type="submit" 
             onClick={event => login(event)}>Login
           </button>
+          <button 
+            type="submit"
+            onClick={LogoutComponent}>Logout
+          </button>
         </div>
       </form>
+      <div id="error-message"></div>
     </div>
   );
 
