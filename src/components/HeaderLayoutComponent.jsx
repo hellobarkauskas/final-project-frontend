@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import '../style/HeaderLayout.css';
+import '../style/HeaderStyle.css';
 
 function HeaderLayoutComponent() {
 
   return (
-    <header className='header-container'>
+    <header className='header-style'>
       <Link to='/'>Admin Panel</Link>
       {/* <Link to='/login'>Login</Link>
       <Link to='/register'>Register</Link>
