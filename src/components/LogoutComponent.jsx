@@ -1,17 +1,19 @@
+import AdminPanelComponent from "./AdminPanelComponent";
+import '../style/LogoutStyle.css';
+
 function LogoutComponent() {
   localStorage.removeItem("token");
   localStorage.removeItem("adminId");
 
   return (
-
-    <div className='logout-button-container'>
-      <button
-        className="logout-button"
-        type="submit"
-        onClick={LogoutComponent}>Logout
-      </button>
+    <div>
+      <AdminPanelComponent />
+      <div className='logout-container'>
+        <h2>Logout successful!</h2>
+        <a href="/login">Go to login page</a>
+      </div>
     </div>
-  )
+  );
   
 };
 

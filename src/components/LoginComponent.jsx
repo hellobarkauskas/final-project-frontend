@@ -1,7 +1,7 @@
 import { useState } from "react";
 import HeaderLayoutComponent from "./HeaderLayoutComponent";
-import LogoutComponent from './LogoutComponent';
 import '../style/ErrorMessage.css';
+import '../style/LoginStyle.css';
 
 function LoginComponent() {
   const [username, setUsername] = useState('');
@@ -27,6 +27,8 @@ function LoginComponent() {
         if (data.error) {
           document.getElementById('error-message').textContent = data.error;
           return;
+        } else if (data.message) {
+          document.getElementById('error-message').textContent = data.message;
         } else {
           document.getElementById('error-message').textContent = '';
         };
@@ -46,22 +48,19 @@ function LoginComponent() {
     <div>
       <HeaderLayoutComponent />
 
-      <form className="login-container">
-        <div className="login-container-style">
+      <form className="login-form">
+        <div className="login-container">
           <h2>Admin Login</h2>
-          <label 
-            htmlFor='username'>username
-          </label>
           <input 
-            type="text" 
+            type="text"
+            placeholder="Username"
             name="username" 
             id="username" 
             value={username} 
             onChange={event => setUsername(event.target.value)} />
-          <label htmlFor='password'>password
-          </label>
           <input 
-            type="text"
+            type="password"
+            placeholder="Password"
             name="password"
             id="password"
             value={password}
@@ -70,13 +69,10 @@ function LoginComponent() {
             type="submit" 
             onClick={event => login(event)}>Login
           </button>
-          <button 
-            type="submit"
-            onClick={LogoutComponent}>Logout
-          </button>
+          <a href="/register">Go to register page</a>
+          <div id="error-message"></div>
         </div>
       </form>
-      <div id="error-message"></div>
     </div>
   );
 

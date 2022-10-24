@@ -1,6 +1,7 @@
 import { useState } from "react";
 import HeaderLayoutComponent from "./HeaderLayoutComponent";
 import '../style/ErrorMessage.css';
+import '../style/RegisterStyle.css';
 
 function RegisterComponent() {
   const [username, setUsername] = useState('');
@@ -26,6 +27,8 @@ function RegisterComponent() {
       if (data.error) {
         document.getElementById('error-message').textContent = data.error;
         return;
+      } else if (data.message) {
+        document.getElementById('error-message').textContent = data.message;
       } else {
         document.getElementById('error-message').textContent = '';
       };
@@ -39,23 +42,19 @@ function RegisterComponent() {
     <div>
       <HeaderLayoutComponent />
 
-      <form className="register-container">
-        <div className="register-container-style">
+      <form className="register-form">
+        <div className="register-container">
           <h2>Admin Register</h2>
-          <label
-            htmlFor='username'>username
-          </label>
           <input 
             type="text"
+            placeholder="Username"
             name="username"
             id="username"
             value={username}
             onChange={event => setUsername(event.target.value)} />
-          <label 
-            htmlFor="password">password
-          </label>
           <input 
             type="text"
+            placeholder="Password"
             name="password"
             id="password"
             value={password}
@@ -64,9 +63,10 @@ function RegisterComponent() {
             type="submit"
             onClick={event => register(event)}>Register
           </button>
+          <a href="/login">Go to login page</a>
+          <div id="error-message"></div>
         </div>
       </form>
-      <div id="error-message"></div>
     </div>
   );
 
