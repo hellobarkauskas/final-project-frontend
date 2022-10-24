@@ -1,0 +1,50 @@
+.add-customer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-customer-container input {
+  margin-bottom: 16px;
+  border-style: none;
+  padding: 8px;
+}
+
+.add-customer-container h2 {
+  color: white;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.add-customer-container button {
+  background-color: orangered;
+  color: white;
+  padding: 8px;
+}
+
+.add-customer-form {
+  background-color: steelblue;
+  max-width: 400px;
+  min-height: 330px;
+  margin: 100px auto;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.unauthorized-access-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: steelblue;
+  max-width: 400px;
+  min-height: 100px;
+  margin: 100px auto;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.unauthorized-access-container h2 {
+  color: white;
+}
+
+.unauthorized-access-container a {
+  color: white;
+}
