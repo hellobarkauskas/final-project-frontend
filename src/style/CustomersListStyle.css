@@ -29,6 +29,11 @@
   color: white;
 }
 
+.customer-container .option-button-container button {
+  background-color: orangered;
+  color: white;
+}
+
 .unauthorized-access-container {
   display: flex;
   flex-direction: column;
