@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import LoginComponent from './components/LoginComponent';
+import RegisterComponent from './components/RegisterComponent';
+import AdminPanelComponent from './components/AdminPanelComponent';
+import CustomersPanelComponent from './components/CustomersPanelComponent';
+import AddCustomerComponent from './components/AddCustomerComponent';
+import CustomersListComponent from './components/CustomersListComponent';
+import LogoutComponent from './components/LogoutComponent';
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <Routes>
+    <Route path='/' element={<AdminPanelComponent />} />
+    <Route path='/login' element={<LoginComponent />} />
+    <Route path='/register' element={<RegisterComponent />} />
+    <Route path='/logout' element={<LogoutComponent />} />
+    <Route path='/customers' element={<CustomersPanelComponent />} />
+    <Route path='/add' element={<AddCustomerComponent />} />
+    <Route path='/list' element={<CustomersListComponent /> } />
+   </Routes>
   );
 }
 
