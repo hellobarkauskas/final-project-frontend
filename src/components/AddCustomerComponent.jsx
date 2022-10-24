@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CustomersPanelComponent from "./CustomersPanelComponent";
 import '../style/ErrorMessage.css';
+import '../style/AddCustomerStyle.css';
 
 function AddCustomerComponent() {
   const token = localStorage.getItem('token');
@@ -53,63 +54,61 @@ function AddCustomerComponent() {
 
   return (
     <div>
-      <CustomersPanelComponent />
+      {
+        token === null ?
+        <div>
+          <CustomersPanelComponent />
+          <div className="unauthorized-access-container">
+            <h2>Access unauthorized!</h2>
+            <a href="/login">Go to login page</a>
+          </div>
+        </div>
 
-      <form className="add-customer-container">
-        <div className="add-customer-container-style">
-          <h2>Add Customer</h2>
-          <label 
-            htmlFor="name">name
-          </label>
-          <input 
-            type="text"
-            name="name"
-            id="name"
-            value={name}
-            onChange={event => setName(event.target.value)} />
-          <label 
-            htmlFor="surname">surname
-          </label>
-          <input 
-            type="text" 
-            name="surname"
-            id="surname"
-            value={surname}
-            onChange={event => setSurname(event.target.value)} />
-          <label 
-            htmlFor="email">email
-          </label>
-          <input 
-            type="text"
-            name="email"
-            id="email"
-            value={email}
-            onChange={event => setEmail(event.target.value)} />
-          <label 
-            htmlFor="age">age
-          </label>
-          <input 
-            type="text"
-            name="age"
-            id="age"
-            value={age}
-            onChange={event => setAge(event.target.value)} />
-          <label 
-            htmlFor="adminId">admin
-          </label>
-          <input 
-            type="number"
-            name="adminId"
-            id="adminId"
-            value={adminId}
-            onChange={event => setAdminId(event.target.value)} />
-          <button 
-            type="submit" 
-            onClick={event => add(event)}>Add
-          </button>                                  
-        </div>     
-      </form>
-      <div id="error-message"></div>
+        :
+
+        <div>
+          <CustomersPanelComponent />
+
+          <form className="add-customer-form">
+            <div className="add-customer-container">
+              <h2>Register new customer</h2>
+              <input 
+                type="text"
+                placeholder="Name"
+                name="name"
+                id="name"
+                value={name}
+                onChange={event => setName(event.target.value)} />
+              <input 
+                type="text"
+                placeholder="Surname"
+                name="surname"
+                id="surname"
+                value={surname}
+                onChange={event => setSurname(event.target.value)} />
+              <input 
+                type="text"
+                placeholder="Email"
+                name="email"
+                id="email"
+                value={email}
+                onChange={event => setEmail(event.target.value)} />
+              <input 
+                type="text"
+                placeholder="Age"
+                name="age"
+                id="age"
+                value={age}
+                onChange={event => setAge(event.target.value)} />
+              <button 
+                type="submit" 
+                onClick={event => add(event)}>Confirm
+              </button>
+              <div id="error-message"></div>                                   
+            </div>
+          </form>
+        </div>
+      }
     </div>
   );
 
