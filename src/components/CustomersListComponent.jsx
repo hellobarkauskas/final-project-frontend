@@ -58,7 +58,7 @@ function CustomersListComponent() {
                       <td>{customer.email}</td>
                       <td>{customer.age}</td>
                       <td>{customer.admin_id}</td>
-                      <td>
+                      <td className="option-button-container">
                         <button>Edit</button>
                         <button>Delete</button>
                       </td>
