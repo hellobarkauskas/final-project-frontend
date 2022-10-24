@@ -1,3 +1,5 @@
+// admin login komponentas su fetch, basic validacija ir token autentifikacija.
+
 import { useState } from "react";
 import HeaderLayoutComponent from "./HeaderLayoutComponent";
 import '../style/ErrorMessage.css';

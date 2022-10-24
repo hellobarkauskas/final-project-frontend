@@ -1,3 +1,5 @@
+// add customer komponentas su fetch, basic validacija ir autentifikacija.
+
 import { useState } from "react";
 import CustomersPanelComponent from "./CustomersPanelComponent";
 import '../style/ErrorMessage.css';

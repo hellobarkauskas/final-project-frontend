@@ -1,3 +1,5 @@
+// admin logout komponentas, pašalina token iš localStorage, taip apribojama prieiga prie add customer/customers list.
+
 import AdminPanelComponent from "./AdminPanelComponent";
 import '../style/LogoutStyle.css';
 

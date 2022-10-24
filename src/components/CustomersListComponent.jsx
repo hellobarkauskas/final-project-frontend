@@ -1,3 +1,5 @@
+// customers list komponentas su fetch ir autentifikacija.
+
 import { useEffect, useState } from "react";
 import CustomersPanelComponent from './CustomersPanelComponent';
 import '../style/CustomersListStyle.css';

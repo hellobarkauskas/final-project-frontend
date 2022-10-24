@@ -1,3 +1,5 @@
+// admin registracijos komponentas su fetch ir basic validacija.
+
 import { useState } from "react";
 import HeaderLayoutComponent from "./HeaderLayoutComponent";
 import '../style/ErrorMessage.css';
